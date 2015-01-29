@@ -97,6 +97,8 @@ class Request {
     var sessionType: SessionType = .Default
     var component: RequestComponent?
     var handlers: Handlers?
+    var autoRetryConfiguration: AutoRetryConfiguration = AutoRetryConfiguration(timeInterval: 5)
+    var retryCount: Int = 0
     var status: RequestStatus = .Waiting
     var task: NSURLSessionTask?
     
