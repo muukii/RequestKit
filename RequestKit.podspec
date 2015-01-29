@@ -9,9 +9,8 @@ s.authors = { 'Muukii' => 'muukii.muukii@gmail.com' }
 s.source = { :git => 'https://github.com/muukii0803/RequestKit.git', :tag => s.version }
 s.dependency 'Alamofire'
 
-"platforms": {
-    "ios": "8.0"
-}
+s.ios.deployment_target = '8.0'
+s.osx.deployment_target = '10.9'
 
 s.source_files = 'RequestKit/Source/*.swift'
 
