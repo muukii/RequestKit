@@ -21,35 +21,35 @@
 // THE SOFTWARE.
 import Alamofire
 
-class Request {
-    enum RequestStatus {
+public class Request {
+    public enum RequestStatus {
         case Waiting
         case Running
         case Success
         case Failure
     }
     
-    enum SessionType {
+    public enum SessionType {
         case Default
         // feature
 //        case Background
     }
     
-    typealias Method = Alamofire.Method
+    public typealias Method = Alamofire.Method
     
-    enum UploadData {
+    public enum UploadData {
         case Data(data: NSData, name: String, fileName: String)
         case Stream(stream: NSInputStream, name: String, fileName: String, length: Int64)
         case URL(fileUrl: NSURL, name: String)
     }
     
-    enum TaskType {
+    public enum TaskType {
         case Data
         case Upload(uploadData: UploadData)
     }
     
-    typealias Parameters = [String : AnyObject]
-    struct RequestComponent {
+    public typealias Parameters = [String : AnyObject]
+    public struct RequestComponent {
         var method: Method
         var path: String
         var parameters: Parameters?
@@ -68,7 +68,7 @@ class Request {
         }
     }
     
-    struct AutoRetryConfiguration {
+    public struct AutoRetryConfiguration {
         var timeInterval: NSTimeInterval = 0
         var maxRetryCount: Int = 5
         var enableBackgroundRetry: Bool = true
@@ -79,11 +79,11 @@ class Request {
         }
     }
     
-    typealias Progress = ((progress: Float) -> Void)
-    typealias Success = ((urlResponse: NSHTTPURLResponse?, responseObject: AnyObject?) -> Void)
-    typealias Failure = ((urlResponse: NSHTTPURLResponse?, error: NSError?) -> Void)
+    public typealias Progress = ((progress: Float) -> Void)
+    public typealias Success = ((urlResponse: NSHTTPURLResponse?, responseObject: AnyObject?) -> Void)
+    public typealias Failure = ((urlResponse: NSHTTPURLResponse?, error: NSError?) -> Void)
     
-    struct Handlers {
+    public struct Handlers {
         var progress: Progress?
         var success: Success?
         var failure: Failure?
@@ -94,19 +94,19 @@ class Request {
         }
     }
     
-    var sessionType: SessionType = .Default
-    var component: RequestComponent?
-    var handlers: Handlers?
-    var autoRetryConfiguration: AutoRetryConfiguration = AutoRetryConfiguration(timeInterval: 5)
-    var retryCount: Int = 0
-    var status: RequestStatus = .Waiting
-    var task: NSURLSessionTask?
+    public var sessionType: SessionType = .Default
+    public var component: RequestComponent?
+    public var handlers: Handlers?
+    public var autoRetryConfiguration: AutoRetryConfiguration = AutoRetryConfiguration(timeInterval: 5)
+    public var retryCount: Int = 0
+    public var status: RequestStatus = .Waiting
+    public var task: NSURLSessionTask?
     
-    var baseURL: NSURL? {
+    public var baseURL: NSURL? {
         return nil
     }
     
-    func appendDefaultParameters(parameters : [String: AnyObject]?) -> [String: AnyObject]? {
+    public func appendDefaultParameters(parameters : [String: AnyObject]?) -> [String: AnyObject]? {
         return parameters
     }
 }

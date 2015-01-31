@@ -21,12 +21,12 @@
 // THE SOFTWARE.
 import Alamofire
 
-class Dispatcher {
+public class Dispatcher {
     
-    var defaultSessionManager: Alamofire.Manager!
-    var backgroundSessionManager: Alamofire.Manager!
+    public var defaultSessionManager: Alamofire.Manager!
+    public var backgroundSessionManager: Alamofire.Manager!
     
-    init() {
+    public init() {
         let defaultSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
         self.defaultSessionManager = Alamofire.Manager(configuration: defaultSessionConfiguration)
     }
@@ -43,7 +43,7 @@ class Dispatcher {
     :param: error
     :param: request
     */
-    func centralProcessSuccess(urlResponse: NSHTTPURLResponse?, object: NSObject?, error: NSError?, request: Request) {
+    public func centralProcessSuccess(urlResponse: NSHTTPURLResponse?, object: NSObject?, error: NSError?, request: Request) {
         request.status = .Success
         if let response = urlResponse {
             if self.validateError(urlResponse, object: object, error: error, request: request) {
@@ -63,7 +63,7 @@ class Dispatcher {
     :param: error
     :param: request
     */
-    func centralProcessFailure(urlResponse: NSHTTPURLResponse?, object: NSObject?, error: NSError?, request: Request) {
+    public func centralProcessFailure(urlResponse: NSHTTPURLResponse?, object: NSObject?, error: NSError?, request: Request) {
         request.status = .Failure
         if request.retryCount > request.autoRetryConfiguration.maxRetryCount {
             request.handlers?.failure?(urlResponse: urlResponse, error: error)
@@ -73,7 +73,7 @@ class Dispatcher {
         }
     }
     
-    func validateError(urlResponse: NSHTTPURLResponse?, object: NSObject?, error: NSError?, request: Request) -> Bool {
+    public func validateError(urlResponse: NSHTTPURLResponse?, object: NSObject?, error: NSError?, request: Request) -> Bool {
         // Customize
         return false
     }
@@ -82,7 +82,7 @@ class Dispatcher {
         
     }
     
-    func retryRequest(request: Request) {
+    public func retryRequest(request: Request) {
         let delay = request.autoRetryConfiguration.timeInterval * Double(NSEC_PER_SEC)
         let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(time, dispatch_get_main_queue(), {
@@ -96,7 +96,7 @@ class Dispatcher {
     
     :param: request
     */
-    func dispatch(request: Request) {
+    public func dispatch(request: Request) {
         var backgroundTask = UIBackgroundTaskInvalid
         backgroundTask = UIApplication.sharedApplication().beginBackgroundTaskWithName("me.muukii.requestkit.background_task", expirationHandler: { () -> Void in
             UIApplication.sharedApplication().endBackgroundTask(backgroundTask)
@@ -137,7 +137,7 @@ class Dispatcher {
     :param: request
     :param: sessionManager
     */
-    typealias Progress = Request.Progress
+    public typealias Progress = Request.Progress
     
     private var dataTaskProgressDictionary = [String : Progress]()
     
@@ -240,7 +240,7 @@ class Dispatcher {
     
     
     private var downloadTaskProgressDictionary = [String : Progress]()
-    func dispathForDownloadTask(
+    public func dispathForDownloadTask(
         #fileName: String,
         downloadUrl: NSURL,
         downloadDestination: NSURL,
