@@ -54,10 +54,10 @@ public class Request {
     
     public typealias Parameters = [String : AnyObject]
     public struct RequestComponent {
-        var method: Method
-        var path: String
-        var parameters: Parameters?
-        var taskType: TaskType
+        public var method: Method
+        public var path: String
+        public var parameters: Parameters?
+        public var taskType: TaskType
         public init(method: Method, path: String = "") {
             self.method = method
             self.path = path
@@ -73,9 +73,9 @@ public class Request {
     }
     
     public struct AutoRetryConfiguration {
-        var timeInterval: NSTimeInterval = 0
-        var maxRetryCount: Int = 5
-        var enableBackgroundRetry: Bool = true
+        public var timeInterval: NSTimeInterval = 0
+        public var maxRetryCount: Int = 5
+        public var enableBackgroundRetry: Bool = true
         public init(timeInterval: NSTimeInterval, maxRetryCount: Int = 5, enableBackgroundRetry: Bool = true) {
             self.timeInterval = timeInterval
             self.maxRetryCount = maxRetryCount
