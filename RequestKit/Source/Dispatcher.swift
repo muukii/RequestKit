@@ -25,6 +25,7 @@ public class Dispatcher {
     
     public var defaultSessionManager: Alamofire.Manager!
     public var backgroundSessionManager: Alamofire.Manager!
+    public var parameterEncoding: ParameterEncoding = ParameterEncoding.URL
     
     public init() {
         let defaultSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
@@ -32,7 +33,8 @@ public class Dispatcher {
     }
     
     deinit {
-
+        self.defaultSessionManager = nil
+        self.backgroundSessionManager = nil
     }
     
     /**
@@ -149,7 +151,7 @@ public class Dispatcher {
                 component.method,
                 self.absoluteUrlString(request),
                 parameters: component.parameters,
-                encoding: ParameterEncoding.JSON)
+                encoding: parameterEncoding)
             
             task = alamofireRequest.task
             
