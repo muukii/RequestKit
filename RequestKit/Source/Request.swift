@@ -88,9 +88,9 @@ public class Request {
     public typealias Failure = ((urlResponse: NSHTTPURLResponse?, error: NSError?) -> Void)
     
     public struct Handlers {
-        var progress: Progress?
-        var success: Success?
-        var failure: Failure?
+        public var progress: Progress?
+        public var success: Success?
+        public var failure: Failure?
         public init(progress: Progress? = nil, success: Success? = nil, failure: Failure? = nil) {
             self.progress = progress
             self.success = success
