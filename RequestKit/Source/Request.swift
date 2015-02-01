@@ -22,6 +22,10 @@
 import Alamofire
 
 public class Request {
+    public init() {
+        
+    }
+    
     public enum RequestStatus {
         case Waiting
         case Running
@@ -54,12 +58,12 @@ public class Request {
         var path: String
         var parameters: Parameters?
         var taskType: TaskType
-        init(method: Method, path: String = "") {
+        public init(method: Method, path: String = "") {
             self.method = method
             self.path = path
             self.taskType = .Data
         }
-        func description() -> String {
+        public func description() -> String {
             var log: String = "\n"
             log += "Method: " + method.rawValue + "\n"
             log += "Path: " + path + "\n"
@@ -72,7 +76,7 @@ public class Request {
         var timeInterval: NSTimeInterval = 0
         var maxRetryCount: Int = 5
         var enableBackgroundRetry: Bool = true
-        init(timeInterval: NSTimeInterval, maxRetryCount: Int = 5, enableBackgroundRetry: Bool = true) {
+        public init(timeInterval: NSTimeInterval, maxRetryCount: Int = 5, enableBackgroundRetry: Bool = true) {
             self.timeInterval = timeInterval
             self.maxRetryCount = maxRetryCount
             self.enableBackgroundRetry = enableBackgroundRetry
@@ -87,7 +91,7 @@ public class Request {
         var progress: Progress?
         var success: Success?
         var failure: Failure?
-        init(progress: Progress? = nil, success: Success? = nil, failure: Failure? = nil) {
+        public init(progress: Progress? = nil, success: Success? = nil, failure: Failure? = nil) {
             self.progress = progress
             self.success = success
             self.failure = failure
