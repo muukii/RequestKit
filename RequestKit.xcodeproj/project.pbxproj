@@ -35,7 +35,6 @@
 /* Begin PBXFileReference section */
 		2ABF54A70A5C49CCE35573D5 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B8CCE901A62809F0028DF52 /* RequestKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RequestKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4B8CCE941A62809F0028DF52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B8CCE951A62809F0028DF52 /* RequestKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestKit.h; sourceTree = "<group>"; };
 		4B8CCE9B1A62809F0028DF52 /* RequestKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RequestKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B8CCEA11A62809F0028DF52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -43,11 +42,12 @@
 		4B8CCEAD1A6283A50028DF52 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		4B8CCEB11A6288BD0028DF52 /* Dispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
 		4BBCFF941AC73653009A1804 /* RequestKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RequestKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4BBCFF951AC73653009A1804 /* RequestKit copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "RequestKit copy-Info.plist"; path = "/Users/Muukii/Library/Mobile Documents/com~apple~CloudDocs/CloudDevelop/RequestKit/RequestKit copy-Info.plist"; sourceTree = "<absolute>"; };
 		4BFAC0871AC7398300BFDA31 /* Pods-RequestKit-iOS.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-RequestKit-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RequestKit-iOS/Pods-RequestKit-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		4BFAC0881AC7398300BFDA31 /* Pods-RequestKit-iOS.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-RequestKit-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-RequestKit-iOS/Pods-RequestKit-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		4BFAC0891AC7398300BFDA31 /* Pods-RequestKit-Mac.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-RequestKit-Mac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RequestKit-Mac/Pods-RequestKit-Mac.debug.xcconfig"; sourceTree = "<group>"; };
 		4BFAC08A1AC7398300BFDA31 /* Pods-RequestKit-Mac.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-RequestKit-Mac.release.xcconfig"; path = "Pods/Target Support Files/Pods-RequestKit-Mac/Pods-RequestKit-Mac.release.xcconfig"; sourceTree = "<group>"; };
+		4BFAC08B1AC739FD00BFDA31 /* RequestKit-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RequestKit-iOS.plist"; sourceTree = "<group>"; };
+		4BFAC08C1AC739FD00BFDA31 /* RequestKit-Mac.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RequestKit-Mac.plist"; sourceTree = "<group>"; };
 		9475D3469E08F7ACB9384BDA /* Pods_RequestKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RequestKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB1FFC028F6E4D4BACA14A08 /* Pods_RequestKit_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RequestKit_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF03A5F734ED968D287A7A4D /* Pods_RequestKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RequestKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,7 +92,6 @@
 				4B8CCE911A62809F0028DF52 /* Products */,
 				FE9AC7281C69DC34884893C5 /* Pods */,
 				A3729ACC0EEBB994BFDA0C6D /* Frameworks */,
-				4BBCFF951AC73653009A1804 /* RequestKit copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,7 +118,8 @@
 		4B8CCE931A62809F0028DF52 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				4B8CCE941A62809F0028DF52 /* Info.plist */,
+				4BFAC08B1AC739FD00BFDA31 /* RequestKit-iOS.plist */,
+				4BFAC08C1AC739FD00BFDA31 /* RequestKit-Mac.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -540,7 +540,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = RequestKit/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RequestKit/RequestKit-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -559,7 +559,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = RequestKit/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RequestKit/RequestKit-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -609,7 +609,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "RequestKit copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/RequestKit/RequestKit-Mac.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -630,7 +630,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "RequestKit copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/RequestKit/RequestKit-Mac.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
