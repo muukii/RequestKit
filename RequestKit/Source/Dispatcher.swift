@@ -99,11 +99,13 @@ public class Dispatcher {
     :param: request
     */
     public func dispatch(request: Request) {
+        #if iOS
         var backgroundTask = UIBackgroundTaskInvalid
         backgroundTask = UIApplication.sharedApplication().beginBackgroundTaskWithName("me.muukii.requestkit.background_task", expirationHandler: { () -> Void in
             UIApplication.sharedApplication().endBackgroundTask(backgroundTask)
             backgroundTask = UIBackgroundTaskInvalid
         })
+            #endif
         
         request.status = .Running
         if let component = request.component {

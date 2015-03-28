@@ -10,6 +10,7 @@ s.source = { :git => 'https://github.com/muukii0803/RequestKit.git', :tag => s.v
 s.dependency 'Alamofire'
 
 s.ios.deployment_target = '8.0'
+s.osx.deployment_target = '10.10'
 
 s.source_files = 'RequestKit/Source/*.swift'
 
