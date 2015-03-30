@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name = 'RequestKit'
-s.version = '0.1.5'
+s.version = '0.1.7'
 s.license = 'MIT'
 s.summary = 'Easy Request'
 s.homepage = 'http://www.muukii.me/'
