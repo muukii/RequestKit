@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B702D661B11B3AA000FDA99 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B702D641B11B3AA000FDA99 /* Dispatcher.swift */; };
+		4B702D671B11B3AA000FDA99 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B702D651B11B3AA000FDA99 /* Request.swift */; };
 		4B8CCE961A62809F0028DF52 /* RequestKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B8CCE951A62809F0028DF52 /* RequestKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4B8CCE9C1A62809F0028DF52 /* RequestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8CCE901A62809F0028DF52 /* RequestKit.framework */; };
 		4B8CCEA31A62809F0028DF52 /* RequestKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8CCEA21A62809F0028DF52 /* RequestKitTests.swift */; };
-		4BA729941B11AF1400CF769C /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA729921B11AF1400CF769C /* Dispatcher.swift */; };
-		4BA729951B11AF1400CF769C /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA729931B11AF1400CF769C /* Request.swift */; };
 		7470D519CF807B43221F1CCD /* Pods_RequestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9475D3469E08F7ACB9384BDA /* Pods_RequestKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -28,14 +28,14 @@
 /* Begin PBXFileReference section */
 		3EDB380B4224CEFC071BE2AF /* Pods-RequestKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RequestKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RequestKit/Pods-RequestKit.debug.xcconfig"; sourceTree = "<group>"; };
 		43DCAA6CB68158495DA9774D /* Pods-RequestKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RequestKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-RequestKit/Pods-RequestKit.release.xcconfig"; sourceTree = "<group>"; };
+		4B702D641B11B3AA000FDA99 /* Dispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
+		4B702D651B11B3AA000FDA99 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		4B8CCE901A62809F0028DF52 /* RequestKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RequestKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B8CCE941A62809F0028DF52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B8CCE951A62809F0028DF52 /* RequestKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestKit.h; sourceTree = "<group>"; };
 		4B8CCE9B1A62809F0028DF52 /* RequestKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RequestKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B8CCEA11A62809F0028DF52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B8CCEA21A62809F0028DF52 /* RequestKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestKitTests.swift; sourceTree = "<group>"; };
-		4BA729921B11AF1400CF769C /* Dispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dispatcher.swift; path = ../../../iOS/Projects/Ambience/Ambience/Request/Dispatcher.swift; sourceTree = "<group>"; };
-		4BA729931B11AF1400CF769C /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Request.swift; path = ../../../iOS/Projects/Ambience/Ambience/Request/Request.swift; sourceTree = "<group>"; };
 		9475D3469E08F7ACB9384BDA /* Pods_RequestKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RequestKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -59,6 +59,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B702D631B11B3AA000FDA99 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				4B702D641B11B3AA000FDA99 /* Dispatcher.swift */,
+				4B702D651B11B3AA000FDA99 /* Request.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
 		4B8CCE861A62809F0028DF52 = {
 			isa = PBXGroup;
 			children = (
@@ -83,7 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				4B8CCE951A62809F0028DF52 /* RequestKit.h */,
-				4B8CCEAC1A6283930028DF52 /* Source */,
+				4B702D631B11B3AA000FDA99 /* Source */,
 				4B8CCE931A62809F0028DF52 /* Supporting Files */,
 			);
 			path = RequestKit;
@@ -112,15 +121,6 @@
 				4B8CCEA11A62809F0028DF52 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		4B8CCEAC1A6283930028DF52 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				4BA729921B11AF1400CF769C /* Dispatcher.swift */,
-				4BA729931B11AF1400CF769C /* Request.swift */,
-			);
-			path = Source;
 			sourceTree = "<group>";
 		};
 		A3729ACC0EEBB994BFDA0C6D /* Frameworks */ = {
@@ -298,8 +298,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BA729941B11AF1400CF769C /* Dispatcher.swift in Sources */,
-				4BA729951B11AF1400CF769C /* Request.swift in Sources */,
+				4B702D661B11B3AA000FDA99 /* Dispatcher.swift in Sources */,
+				4B702D671B11B3AA000FDA99 /* Request.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,9 +420,11 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LLVM_LTO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_WHOLE_MODULE_OPTIMIZATION = NO;
 			};
 			name = Debug;
 		};
@@ -439,8 +441,10 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LLVM_LTO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_WHOLE_MODULE_OPTIMIZATION = YES;
 			};
 			name = Release;
 		};
