@@ -56,12 +56,7 @@ public class Dispatcher: NSObject {
         self.defaultSessionManager = AFHTTPSessionManager(sessionConfiguration: defaultSessionConfiguration)
         self.defaultSessionManager?.requestSerializer = AFHTTPRequestSerializer()
 
-        var backgroundSessionConfiguration: NSURLSessionConfiguration!
-        if NSURLSessionConfiguration.respondsToSelector("backgroundSessionConfigurationWithIdentifier:") {
-            backgroundSessionConfiguration = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier(sessionIdentifier)
-        } else {
-            backgroundSessionConfiguration = NSURLSessionConfiguration.backgroundSessionConfiguration(sessionIdentifier)
-        }
+        var backgroundSessionConfiguration = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier(sessionIdentifier)
         self.backgroundSessionManager = AFHTTPSessionManager(sessionConfiguration: backgroundSessionConfiguration)
 
         self.backgroundSessionManager?.setDownloadTaskDidFinishDownloadingBlock({ (session: NSURLSession!, downloadTask: NSURLSessionDownloadTask!, url: NSURL!) -> NSURL! in
