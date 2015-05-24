@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 eureka. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 public class Request: NSObject {
     public enum RequestStatus {
