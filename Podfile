@@ -3,7 +3,7 @@
 use_frameworks!
 
 target 'RequestKit' do
-pod 'Alamofire'
+pod 'AFNetworking', '2.5.3'
 
 end
 
