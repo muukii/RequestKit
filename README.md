@@ -1,3 +1,3 @@
 # RequestKit
 
-Using Alamofire
+Easy Request
