@@ -356,7 +356,7 @@ public class Dispatcher: NSObject {
             let urlRequest = AFHTTPRequestSerializer().requestWithMethod (
                 component.method.rawValue,
                 URLString: self.absoluteUrlString(request) as String,
-                parameters: component.parameters,
+                parameters: component.validatedParameters,
                 error: &error)
             urlRequest.timeoutInterval = 20
 
@@ -446,7 +446,7 @@ public class Dispatcher: NSObject {
             let urlRequest = AFHTTPRequestSerializer().multipartFormRequestWithMethod(
                 component.method.rawValue,
                 URLString: self.absoluteUrlString(request) as String,
-                parameters: component.parameters,
+                parameters: component.validatedParameters,
                 constructingBodyWithBlock: bodyConstructionBlock,
                 error: nil)
 

@@ -9,6 +9,7 @@
 import Foundation
 
 public class Request: NSObject {
+    
     public enum RequestStatus {
         case Waiting
         case Running
@@ -40,13 +41,13 @@ public class Request: NSObject {
     
     public struct AutoRetryConfiguration {
         
-        var breakTime: NSTimeInterval
-        var maxRetryCount: Int
-        var enableBackgroundRetry: Bool
-        var failWhenNotReachable: Bool
-        var failOnErrorHandler: (NSError -> Bool)?
+        public var breakTime: NSTimeInterval
+        public var maxRetryCount: Int
+        public var enableBackgroundRetry: Bool
+        public var failWhenNotReachable: Bool
+        public var failOnErrorHandler: (NSError -> Bool)?
         
-        init(breakTime: NSTimeInterval = 5,
+        public init(breakTime: NSTimeInterval = 5,
             maxRetryCount: Int = 5,
             enableBackgroundRetry: Bool = true,
             failWhenNotReachable: Bool = false,
@@ -60,14 +61,33 @@ public class Request: NSObject {
         }
     }
     
-    public typealias Parameters = [String : AnyObject]
+    public typealias Parameters = [String : AnyObject?]
+    public let EmptyParameter = ""
+    
     public struct RequestComponent {
-        var method: Method
-        var path: String
-        var parameters: Parameters?
-        var taskType: TaskType
+        public var method: Method
+        public var path: String
+        public var parameters: Parameters?
+        public var taskType: TaskType
         
-        init(method: Method, path: String = "", parameters: Parameters? = nil) {
+        public var validatedParameters: [String: AnyObject] {
+            
+            var validatedParameters = [String: AnyObject]()
+            if let parameters = self.parameters {
+                for key in parameters.keys {
+                    
+                    if let value: AnyObject? = parameters[key] {
+                        if let value: AnyObject = value {
+                            
+                            validatedParameters[key] = value
+                        }
+                    }
+                }
+            }
+            return validatedParameters
+        }
+        
+        public init(method: Method, path: String = "", taskType: TaskType = .Data, parameters: Parameters? = nil) {
             self.method = method
             self.path = path
             self.taskType = .Data
