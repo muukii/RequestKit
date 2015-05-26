@@ -130,32 +130,32 @@ public class Request: NSObject {
         return nil
     }
     
-    func progress(progress: Progress) -> Self {
+    public func progress(progress: Progress) -> Self {
         
         self.progressHandler = progress
         return self
     }
     
-    func success(success: Success) -> Self {
+    public func success(success: Success) -> Self {
         
         self.successHandler = success
         return self
     }
     
-    func failure(failure: Failure) -> Self {
+    public func failure(failure: Failure) -> Self {
         
         self.failureHandler = failure
         return self
     }
     
-    func completion(completion: Completion) -> Self {
+    public func completion(completion: Completion) -> Self {
         
         self.completionHandler = completion
         return self
     }
     
     
-    func appendDefaultParameters(parameters : Parameters?) -> Parameters? {
+    public func appendDefaultParameters(parameters : Parameters?) -> Parameters? {
         
         return parameters
     }
@@ -165,7 +165,7 @@ public class Request: NSObject {
     
     :param: task
     */
-    func setSessionTask(task: NSURLSessionTask?) {
+    public func setSessionTask(task: NSURLSessionTask?) {
         
         self.task = task
     }
@@ -175,7 +175,7 @@ public class Request: NSObject {
     
     :param: status
     */
-    func updateStatus(status: RequestStatus) {
+    public func updateStatus(status: RequestStatus) {
         
         self.status = status
     }
@@ -185,7 +185,7 @@ public class Request: NSObject {
     
     :param: retryCount
     */
-    func updateRetryCount(retryCount: Int) {
+    public func updateRetryCount(retryCount: Int) {
         
         self.retryCount = retryCount
     }
