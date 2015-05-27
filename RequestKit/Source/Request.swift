@@ -38,7 +38,11 @@ public class Request {
         case Upload(uploadData: [UploadData])
     }
     
-    public required init(path: String, requestData: RequestData, method: Method = .POST, autoRetryConfiguration: AutoRetryConfiguration = AutoRetryConfiguration(breakTime: 5)) {
+    public required init(
+        path: String,
+        requestData: RequestData,
+        method: Method = .POST,
+        autoRetryConfiguration: AutoRetryConfiguration = AutoRetryConfiguration(breakTime: 5)) {
         
         self.autoRetryConfiguration = autoRetryConfiguration
         self.method = method
@@ -94,9 +98,9 @@ public class Request {
     }
     
     
-    public func appendDefaultParameters(parameters : Parameters?) -> Parameters? {
+    public func appendDefaultParameters(requestData : RequestData?) -> RequestData? {
         
-        return parameters
+        return requestData
     }
     
     /**
