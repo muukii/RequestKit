@@ -8,7 +8,12 @@
 
 import Foundation
 
-public class Request: NSObject {
+public class Request {
+    
+    public typealias Progress = ((progress: Float) -> Void)
+    public typealias Success = ((urlResponse: NSHTTPURLResponse?, responseObject: AnyObject?) -> Void)
+    public typealias Failure = ((urlResponse: NSHTTPURLResponse?, responseObject: AnyObject?, error: NSError?) -> Void)
+    public typealias Completion = (() -> Void)
     
     public enum RequestStatus {
         case Waiting
@@ -28,89 +33,24 @@ public class Request: NSObject {
         case POST = "POST"
     }
     
-    public enum UploadData {
-        case Data(data: NSData, name: String, fileName: String)
-        case Stream(stream: NSInputStream, name: String, fileName: String, length: Int64)
-        case URL(fileUrl: NSURL, name: String)
-    }
-    
     public enum TaskType {
         case Data
         case Upload(uploadData: [UploadData])
     }
     
-    public struct AutoRetryConfiguration {
+    public required init(path: String, requestData: RequestData, method: Method = .POST, autoRetryConfiguration: AutoRetryConfiguration = AutoRetryConfiguration(breakTime: 5)) {
         
-        public var breakTime: NSTimeInterval
-        public var maxRetryCount: Int
-        public var enableBackgroundRetry: Bool
-        public var failWhenNotReachable: Bool
-        public var failOnErrorHandler: (NSError -> Bool)?
-        
-        public init(breakTime: NSTimeInterval = 5,
-            maxRetryCount: Int = 5,
-            enableBackgroundRetry: Bool = true,
-            failWhenNotReachable: Bool = false,
-            failOnErrorHandler: (NSError -> Bool)? = nil) {
-                
-                self.breakTime = breakTime
-                self.maxRetryCount = maxRetryCount
-                self.enableBackgroundRetry = enableBackgroundRetry
-                self.failWhenNotReachable = failWhenNotReachable
-                self.failOnErrorHandler = failOnErrorHandler
-        }
-    }
-    
-    public typealias Parameters = [String : AnyObject?]
-    public let EmptyParameter = ""
-    
-    public struct RequestComponent {
-        public var method: Method
-        public var path: String
-        public var parameters: Parameters?
-        public var taskType: TaskType
-        
-        public var validatedParameters: [String: AnyObject] {
-            
-            var validatedParameters = [String: AnyObject]()
-            if let parameters = self.parameters {
-                for key in parameters.keys {
-                    
-                    if let value: AnyObject? = parameters[key] {
-                        if let value: AnyObject = value {
-                            
-                            validatedParameters[key] = value
-                        }
-                    }
-                }
-            }
-            return validatedParameters
-        }
-        
-        public init(method: Method, path: String = "", taskType: TaskType = .Data, parameters: Parameters? = nil) {
-            self.method = method
-            self.path = path
-            self.taskType = .Data
-            self.parameters = parameters
-        }
-    }
-    
-    public typealias Progress = ((progress: Float) -> Void)
-    public typealias Success = ((urlResponse: NSHTTPURLResponse?, responseObject: AnyObject?) -> Void)
-    public typealias Failure = ((urlResponse: NSHTTPURLResponse?, responseObject: AnyObject?, error: NSError?) -> Void)
-    public typealias Completion = (() -> Void)
-    
-    public required init(component: RequestComponent, autoRetryConfiguration: AutoRetryConfiguration = AutoRetryConfiguration(breakTime: 5)) {
-        
-        self.component = component
         self.autoRetryConfiguration = autoRetryConfiguration
+        self.method = method
+        self.path = path
+        self.taskType = .Data
+        self.requestData = requestData
     }
     
-    public convenience init(method: Method, path: String, parameters: Parameters? = nil) {
-        
-        let component = RequestComponent(method: method, path: path, parameters: parameters)
-        self.init(component: component)
-    }
+    public var method: Method
+    public var path: String
+    public var requestData: RequestData
+    public var taskType: TaskType
     
     public var progressHandler: Progress?
     public var successHandler: Success?
@@ -118,7 +58,6 @@ public class Request: NSObject {
     public var completionHandler: Completion?
     
     public var sessionType: SessionType = .Default
-    public var component: RequestComponent?
     public var autoRetryConfiguration: AutoRetryConfiguration
     
     public var status: RequestStatus = .Waiting

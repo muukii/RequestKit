@@ -11,7 +11,7 @@ import AFNetworking
 
 let sessionIdentifier = "me.muukii.requestKit.background_session"
 
-public class Dispatcher: NSObject {
+public class Dispatcher {
     private func RKLog<T>(value: T) {
         #if DEBUG
             println(value)
@@ -35,8 +35,7 @@ public class Dispatcher: NSObject {
 
     var backgroundURLSessionCompletion: (() -> ())?
 
-    public override init() {
-        super.init()
+    public init() {
         
         var backgroundTask = UIBackgroundTaskInvalid
         backgroundTask = UIApplication.sharedApplication().beginBackgroundTaskWithName("me.muukii.requestKit.background_task", expirationHandler: { () -> Void in
